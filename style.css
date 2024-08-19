@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.square {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    pointer-events: none; /* Make sure they don't interfere with mouse events */
+    transition: transform 0.2s, opacity 0.2s; /* Smooth transition for hover effects */
+    z-index: 1;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.137);
+    pointer-events: none; /* So it doesn't interfere with other clicks */
+    transform: scale(0);
+    animation: rippleAnimation 1.2s ease-out;
+    /* Set initial width and height */
+    width: 0;
+    height: 0;
+    /* Center the ripple effect on the click */
+    left: 0;
+    top: 0;
+}
+
+@keyframes rippleAnimation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(145deg, #ff5e5e, #b30000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8),
+                 0 0 20px rgba(255, 0, 0, 0.6),
+                 0 0 30px rgba(255, 0, 0, 0.4);
+    animation: textGlow 1.5s ease-in-out infinite;
+    user-select: none;
+    z-index: 2;
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+    50% { text-shadow: 0 0 20px rgba(255, 0, 0, 1); }
+    100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+}
+
+.div-style {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    position: absolute;
+    transition: all 0.1s ease;
+    animation: pulseGlow 2s infinite ease-in-out;
+    --hover-glow: rgba(255, 0, 0, 0.8); /* Default glow color */
+    --pulse-color: rgba(255, 0, 0, 0.8); /* Default pulse color */
+}
+
+#div1 {
+    background: linear-gradient(145deg, #ff5e5e, #b30000);
+    top: 0;
+    left: 0;
+    transform: translate(10px, 10px); /* Slight offset to prevent touching the edges */
+    --hover-glow: rgba(255, 94, 94, 0.8); /* Match the div color */
+    --pulse-color: rgba(255, 94, 94, 0.6); /* Match the div color */
+    z-index:2;
+}
+
+#div2 {
+    background: linear-gradient(145deg, #5eafff, #003bff);
+    top: 0;
+    right: 0;
+    transform: translate(-10px, 10px); /* Slight offset to prevent touching the edges */
+    --hover-glow: rgba(94, 175, 255, 0.8); /* Match the div color */
+    --pulse-color: rgba(94, 175, 255, 0.6); /* Match the div color */
+    z-index:2;
+}
+
+#div3 {
+    background: linear-gradient(145deg, #5effa4, #00b300);
+    bottom: 0;
+    left: 0;
+    transform: translate(10px, -10px); /* Slight offset to prevent touching the edges */
+    --hover-glow: rgba(94, 255, 164, 0.8); /* Match the div color */
+    --pulse-color: rgba(94, 255, 164, 0.6); /* Match the div color */
+    z-index:2;
+}
+
+#div4 {
+    background: linear-gradient(145deg, #ffea5e, #ffc300);
+    bottom: 0;
+    right: 0;
+    transform: translate(-10px, -10px); /* Slight offset to prevent touching the edges */
+    --hover-glow: rgba(255, 234, 94, 0.8); /* Match the div color */
+    --pulse-color: rgba(255, 234, 94, 0.6); /* Match the div color */
+    z-index:2;
+}
+
+.div-style:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--hover-glow),
+                12px 12px 24px rgba(0, 0, 0, 0.8), 
+                -6px -6px 20px rgba(255, 255, 255, 0.2),
+                inset 3px 3px 7px rgba(255, 255, 255, 0.4),
+                inset -3px -3px 7px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--hover-glow);
+}
+
+.div-style.not-moving {
+    background: linear-gradient(145deg, #1a1a1a, #3c3c3c); /* Matches the body background */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9),
+                0 0 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    animation: none;
+    transform: translateY(10px); /* More pronounced offset */
+}
+
+.div-style.not-moving:hover {
+    box-shadow: 0 0 10px var(--hover-glow),
+                0 0 15px rgba(0, 0, 0, 0.5),
+                inset 0 0 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--hover-glow);
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 15px var(--pulse-color);
+    }
+    50% {
+        box-shadow: 0 0 25px var(--pulse-color);
+    }
+    100% {
+        box-shadow: 0 0 15px var(--pulse-color);
+    }
+}
