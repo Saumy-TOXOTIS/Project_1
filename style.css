@@ -61,6 +61,27 @@ h1 {
     z-index: 2;
 }
 
+h4 {
+    font-weight: bold;
+    background: linear-gradient(145deg, #ff5e5e, #b30000);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8),
+                 0 0 20px rgba(255, 0, 0, 0.6),
+                 0 0 30px rgba(255, 0, 0, 0.4);
+    animation: textGlow 1.5s ease-in-out infinite;
+    user-select: none;
+    z-index: 2;
+}
+
+.instruction
+{
+    display: flex;
+    flex-direction: column;
+}
+
 @keyframes textGlow {
     0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
     50% { text-shadow: 0 0 20px rgba(255, 0, 0, 1); }
